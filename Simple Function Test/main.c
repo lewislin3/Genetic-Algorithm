@@ -179,23 +179,9 @@ int main(){
     
     
     showpopulation(ptr,p_size,g_size);
-    generation(ptr,newptr,p_size,g_size);
-    generation(ptr,newptr,p_size,g_size);
-    generation(ptr,newptr,p_size,g_size);
-    generation(ptr,newptr,p_size,g_size);
-    generation(ptr,newptr,p_size,g_size);
-    generation(ptr,newptr,p_size,g_size);
-    generation(ptr,newptr,p_size,g_size);
-    generation(ptr,newptr,p_size,g_size);
-    generation(ptr,newptr,p_size,g_size);
-    
-    
-    
-    
-    
-    
-   
+    for (i=0; i!=10; i++) {
+        generation(ptr,newptr,p_size,g_size);
+    }
     
     
 }
-
