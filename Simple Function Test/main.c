@@ -51,9 +51,11 @@ int btod(int* gene , int size){
 void mutation(struct population *ptr,int p_size,int g_size){
     
     int i,j;
+    int random;
     for (i=0;i!=p_size ; i++) {
         for (j=0; j!=g_size; j++) {
-            if (rand()%100<=m_rate) {
+            random=rand()%100;
+            if (random<=m_rate) {
                 if(ptr[i].gene[j]==1){
                     ptr[i].gene[j]=0;
                 }
@@ -71,9 +73,11 @@ void crossover(struct population *ptr,int p_size,int g_size){
     int i,j;
     int cut;
     int tmp=0;
+    int random;
     for (i=0; i!=p_size; i=i+2) {
         cut=rand()%(g_size-1);
-        if (rand()%100<=c_rate) {
+        random=rand()%100;
+        if (random<=c_rate) {
             for (j=cut; j!=g_size; j++) {
                 tmp=ptr[i].gene[j];
                 ptr[i].gene[j]=ptr[i+1].gene[j];
@@ -112,21 +116,28 @@ void generation(struct population *ptr,struct population *newptr,int p_size,int 
         
         w1=ptr[p_size-1];
         w2=ptr[p_size-1];
-        wheel1=rand()*100%sum_fit;
-        wheel2=rand()*100%sum_fit;
+        wheel1=rand()%sum_fit;
+        wheel2=rand()%sum_fit;
+        
         for (j=0; j!=p_size; j++) {
             if(wheel1>ptr[j].fitness){
                 wheel1=wheel1-ptr[j].fitness;
             }
             else{
                 w1=ptr[j];
+                break;
             }
+            
+        }
+        for (j=0; j!=p_size; j++) {
             if(wheel2>ptr[j].fitness){
                 wheel2=wheel2-ptr[j].fitness;
             }
             else{
                 w2=ptr[j];
+                break;
             }
+            
         }
         
         newptr[i]=w1;
@@ -185,3 +196,5 @@ int main(){
     
     
 }
+
+
