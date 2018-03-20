@@ -11,7 +11,7 @@ struct population{
 };
 
 void showpopulation(struct population *ptr,int p_size,int g_size){
-    
+
     int i,j;
     struct population tmp;
     for (j=0; j!=p_size; j++) {
