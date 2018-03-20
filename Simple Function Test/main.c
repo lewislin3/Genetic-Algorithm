@@ -144,7 +144,12 @@ void generation(struct population *ptr,struct population *newptr,int p_size,int 
         newptr[i+1]=w2;
         
     }
-    ptr=newptr;
+    for (i=0; i!=p_size; i++) {
+        ptr[i].fitness=newptr[i].fitness;
+        for (j=0; j!=g_size; j++) {
+            ptr[i].gene[j]=newptr[i].gene[j];
+        }
+    }
     crossover(ptr,p_size,g_size);
     showpopulation(ptr,p_size,g_size);
     
