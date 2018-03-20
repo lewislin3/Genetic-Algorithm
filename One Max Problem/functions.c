@@ -37,7 +37,7 @@ void mutation(struct population *ptr){
             random=rand()%100+1;
             if (random<=(m_rate*100)) {
                 if(ptr[i].gene[j]==1){ptr[i].gene[j]=0;}
-                if(ptr[i].gene[j]==0){ptr[i].gene[j]=1;}
+                else{ptr[i].gene[j]=1;}
             }
         }
     }
