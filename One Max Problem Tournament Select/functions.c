@@ -38,7 +38,6 @@ void mutation(struct population *ptr){
             if (random<=(m_rate*100)) {
                 if(ptr[i].gene[j]==1){ptr[i].gene[j]=0;}
                 else{ptr[i].gene[j]=1;}
-                //printf("%d %d\n",i,j);
             }
         }
     }
@@ -69,32 +68,33 @@ void generation(struct population *ptr,struct population *newptr){
     int sum_fit=0;
     int i,j;
     int wheel1,wheel2;
+    struct population select[tournament];
     
-    for (i=0; i!=p_size; i++) {
-        sum_fit=sum_fit+ptr[i].fitness;
-    }
-    for (i=0; i!=p_size; i=i+2) {
-        w1=ptr[p_size-1];
-        w2=ptr[p_size-1];
-        wheel1=rand()%sum_fit;
-        wheel2=rand()%sum_fit;
-        for (j=0; j!=p_size; j++) {
-            if(wheel1>ptr[j].fitness){wheel1=wheel1-ptr[j].fitness;}
-            else{
-                w1=ptr[j];
-                break;
+    for (j=0; j!=p_size; j=j+2) {
+        for (i=0; i!=tournament; i++) {
+            select[i]=ptr[rand()%p_size];
+        }
+        w1=select[0];
+        for (i=0; i!=tournament; i++) {
+            if (select[i].fitness>=w1.fitness) {
+                w1=select[i];
             }
         }
-        for (j=0; j!=p_size; j++) {
-            if(wheel2>ptr[j].fitness){wheel2=wheel2-ptr[j].fitness;}
-            else{
-                w2=ptr[j];
-                break;
+        for (i=0; i!=tournament; i++) {
+            select[i]=ptr[rand()%p_size];
+        }
+        w2=select[0];
+        for (i=0; i!=tournament; i++) {
+            if (select[i].fitness>=w2.fitness) {
+                w2=select[i];
             }
         }
-        newptr[i]=w1;
-        newptr[i+1]=w2;
+        newptr[j]=w1;
+        newptr[j+1]=w2;
     }
+    
+    
+    
     for (i=0; i!=p_size; i++) {
         ptr[i].fitness=newptr[i].fitness;
         for (j=0; j!=g_size; j++) {
