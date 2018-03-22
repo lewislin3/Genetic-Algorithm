@@ -65,9 +65,7 @@ void crossover(struct population *ptr){
 
 void generation(struct population *ptr,struct population *newptr){
     struct population w1,w2;
-    int sum_fit=0;
     int i,j;
-    int wheel1,wheel2;
     struct population select[tournament];
     
     for (j=0; j!=p_size; j=j+2) {
