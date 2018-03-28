@@ -1,3 +1,3 @@
 # Genetic-Algorithm
 
-# Some project from the course Evolutionary Computation
+## Some project from the course Evolutionary Computation
