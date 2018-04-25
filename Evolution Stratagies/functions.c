@@ -21,6 +21,14 @@ void showpopulation(struct population *ptr){
 }
 
 void mutation(struct population *ptr){
+
+    int i,j;
+    for(i=0; i!=p_size; i++){
+        for(j=0; j!=g_size; j++){
+            ptr[i].gene[j]+=gauss(std_v);
+        }
+        
+    }
     
 }
 

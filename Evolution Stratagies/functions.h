@@ -2,11 +2,12 @@
 #define Header_h
 #include <stdio.h>
 
-#define p_size 200
-#define g_size 50
+#define p_size 1
+#define g_size 10
 #define c_rate 1
 #define m_rate 0
 #define gens 100
+#define std_v 1
 
 struct population{
     int gene[g_size];
