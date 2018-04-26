@@ -36,8 +36,16 @@ void mutation(struct population *new, struct population *old){
             old[i].gene[j]=new[i].gene[j];
             new[i].gene[j]+=gauss(std_v);
         }
+        fitness(new);
+        fitness(old);
+        if(new[i].fitness>old[i].fitness){
+            for(j=0; j!=g_size; j++){
+                new[i].gene[j]=old[i].gene[j];
+            }
+        }
         
     }
+    
     
 }
 
