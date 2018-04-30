@@ -41,13 +41,6 @@ void mutation(struct population *new, struct population *old, double std_v){
     
 }
 
-void crossover(struct population *ptr){
-    
-}
-
-void generation(struct population *ptr,struct population *newptr){
-    
-}
 
 /// fitness are functions that changes with the scenario
 
