@@ -11,7 +11,7 @@
 
 #define p_size 50
 #define action_num 2
-#define maxfit 200000
+#define maxfit 10000000
 
 
 #include <stdio.h>
@@ -28,6 +28,8 @@ struct populations{
     int correct;
     int error;
     int m_set;
+    int c_t;
+    int e_t;
     
 };
 
@@ -36,4 +38,6 @@ void createpopulation(struct populations*, int, int [6]);
 int getanwser(int [6]);
 void showrules(struct populations*, int);
 void mutation(struct populations*, int,int);
+void checksame(struct populations*, int);
+void checksame2(struct populations*, int);
 #endif /* functions_h */

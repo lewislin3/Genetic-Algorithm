@@ -64,7 +64,7 @@ int main() {
                     }
                 }
                 createpopulation(pop, catch, input);
-                
+                createpopulation(pop, catch, input);
             }
             catch=rand()%action_num;
             ans=getanwser(input);
@@ -105,6 +105,7 @@ int main() {
                     //printf("[%d %d %d]\n",pop[i].correct,pop[i].error,pop[i].match_time);
                     if (pop[i].action==ans) {
                         pop[i].correct++;
+                        pop[i].c_t++;
                         pop[i].fitness=pop[i].fitness*(1+(double)(pop[i].correct/pop[i].match_time));
                         
                         if (pop[i].fitness>=maxfit) {
@@ -113,6 +114,7 @@ int main() {
                     }
                     else{
                         pop[i].error++;
+                        pop[i].e_t++;
                         pop[i].fitness=pop[i].fitness/(1+(double)(pop[i].error/pop[i].match_time));
                         if (pop[i].fitness<=0) {
                             pop[i].fitness=0.5;
@@ -146,9 +148,13 @@ int main() {
                 if (p_exist<=p_size) {
                     mutation(pop,p_exist,p_exist);
                     p_exist++;
+                    checksame(pop, p_exist);
+                    //checksame2(pop, p_exist);
                 }
                 else{
                     mutation(pop,p_exist,select2);
+                    checksame(pop, p_exist);
+                    //checksame2(pop, p_exist);
                 }
                 
                 
@@ -170,7 +176,7 @@ int main() {
             subruntime=0;
         }
         
-        if (runtime==50000) {
+        if (runtime==10000) {
             showrules(pop, p_exist);
             printf("%f\n",(double)test/runtime);
             return 0;
@@ -178,7 +184,6 @@ int main() {
         
         
     }
-    
     
     
     
