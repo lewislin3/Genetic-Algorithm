@@ -26,9 +26,7 @@ int main() {
     
     while(1){
         runtime++;
-        subruntime++;
-        
-        //printf("input\n");
+        subruntime++;        
         for (i=0; i!=6; i++) {
             input[i]=rand()%2;
         }
@@ -45,13 +43,11 @@ int main() {
                 action_cnt[pop[i].action]+=pop[i].fitness;
             }
         }
-        //printf("p_match:%d\n",p_match);
         
         if (p_match==0) {
             if (p_exist<p_size) {
                 createpopulation(pop, p_exist, input);
                 p_exist++;
-                //printf("p_exist:%d\n",p_exist);
             }
             else{
                 
@@ -69,7 +65,6 @@ int main() {
             catch=rand()%action_num;
             ans=getanwser(input);
             if (ans==catch) {
-                //printf("right\n");
                 correcttime++;
             }
 
@@ -86,23 +81,17 @@ int main() {
                     catch=i;
                 }
             }
-            //printf("input:");
             for (i=0; i!=6; i++) {
-                //printf("%d",input[i]);
             }
-            //printf("\n");
-            //printf("output:%d\n",catch);
+
             ans=getanwser(input);
             if (ans==catch) {
-                //printf("right\n");
                 correcttime++;
             }
             else{
-                //printf("wrong\n");
             }
             for (i=0; i!=p_exist; i++) {
                 if (pop[i].m_set) {
-                    //printf("[%d %d %d]\n",pop[i].correct,pop[i].error,pop[i].match_time);
                     if (pop[i].action==ans) {
                         pop[i].correct++;
                         pop[i].c_t++;
@@ -134,7 +123,6 @@ int main() {
         }
         
         
-        //showrules(pop, p_exist);
         if (p_exist>=20) {
             for (j=0; j!=2; j++) {
                 select2=0;
@@ -149,12 +137,10 @@ int main() {
                     mutation(pop,p_exist,p_exist);
                     p_exist++;
                     checksame(pop, p_exist);
-                    //checksame2(pop, p_exist);
                 }
                 else{
                     mutation(pop,p_exist,select2);
                     checksame(pop, p_exist);
-                    //checksame2(pop, p_exist);
                 }
                 
                 
@@ -166,9 +152,6 @@ int main() {
             pop[i].m_set=0;
         }
 
-        
-        
-        
         
         if(subruntime==100){
             printf("%f\n",(double)correcttime/subruntime);
